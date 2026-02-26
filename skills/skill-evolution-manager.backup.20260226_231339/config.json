@@ -1,0 +1,56 @@
+{
+  "execution_cycle_hours": 24,
+  "priority_level": "low",
+  "audit_level": "strict",
+  "backup_before_upgrade": true,
+  "categories": [
+    {
+      "name": "安全与审计",
+      "description": "系统安全、风险评估、审计和防护相关技能",
+      "skills": ["healthcheck", "security-audit", "firewall-config"]
+    },
+    {
+      "name": "文件管理",
+      "description": "文件操作、备份、同步和管理相关技能",
+      "skills": ["backup", "file-sync", "archive-manager"]
+    },
+    {
+      "name": "开发工具",
+      "description": "代码开发、调试、测试和版本控制相关技能",
+      "skills": ["coding-agent", "github", "git-tools", "code-review"]
+    },
+    {
+      "name": "系统运维",
+      "description": "系统监控、维护、部署和管理相关技能",
+      "skills": ["system-monitor", "docker-manager", "process-control"]
+    },
+    {
+      "name": "数据处理",
+      "description": "数据分析、转换、可视化和管理相关技能",
+      "skills": ["data-analysis", "csv-processor", "json-tools"]
+    },
+    {
+      "name": "网络通信",
+      "description": "网络请求、API调用、消息传递相关技能",
+      "skills": ["web-request", "api-client", "message-sender"]
+    },
+    {
+      "name": "用户交互",
+      "description": "用户界面、通知、语音和多媒体相关技能",
+      "skills": ["tts", "notification", "canvas", "browser"]
+    },
+    {
+      "name": "智能助手",
+      "description": "AI辅助、知识管理、任务自动化相关技能",
+      "skills": ["find-skills", "skill-creator", "context-restore", "concise-output"]
+    }
+  ],
+  "skill_directories": [
+    "~/.npm-global/lib/node_modules/openclaw/skills/",
+    "~/.openclaw/workspace/skills/",
+    "~/.agents/skills/"
+  ],
+  "excluded_skills": ["skill-evolution-manager"],
+  "logging_enabled": true,
+  "auto_notify": true
+}

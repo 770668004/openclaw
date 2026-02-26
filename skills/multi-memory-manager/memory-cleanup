@@ -1,0 +1,5 @@
+#!/bin/bash
+# 清理过期记忆命令
+
+echo "🧹 清理过期记忆..."
+python3 /home/kousoyu/.openclaw/workspace/skills/multi-memory-manager/memory_manager.py cleanup

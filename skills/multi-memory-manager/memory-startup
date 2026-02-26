@@ -1,0 +1,5 @@
+#!/bin/bash
+# 启动时加载关键记忆命令
+
+echo "🚀 启动时加载关键记忆..."
+python3 /home/kousoyu/.openclaw/workspace/skills/multi-memory-manager/memory_manager.py startup

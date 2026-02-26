@@ -1,0 +1,45 @@
+#!/bin/bash
+# 操作日志记录命令
+
+if [ $# -eq 0 ]; then
+    echo "用法: memory-log [--importance critical|high|normal|low] [--file-path /path/to/file] \"操作详情\""
+    exit 1
+fi
+
+IMPORTANCE="normal"
+FILE_PATH=""
+CONTENT=""
+
+# 解析参数
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --importance|-i)
+            IMPORTANCE="$2"
+            shift 2
+            ;;
+        --file-path)
+            FILE_PATH="$2"
+            shift 2
+            ;;
+        *)
+            if [ -z "$CONTENT" ]; then
+                CONTENT="$1"
+            else
+                CONTENT="$CONTENT $1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$CONTENT" ]; then
+    echo "错误: 需要提供操作详情"
+    exit 1
+fi
+
+CMD="python3 /home/kousoyu/.openclaw/workspace/skills/multi-memory-manager/memory_manager.py log --content \"$CONTENT\" --importance \"$IMPORTANCE\""
+if [ -n "$FILE_PATH" ]; then
+    CMD="$CMD --file-path \"$FILE_PATH\""
+fi
+
+eval $CMD

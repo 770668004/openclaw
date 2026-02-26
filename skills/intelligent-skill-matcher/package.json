@@ -1,0 +1,9 @@
+{
+  "name": "intelligent-skill-matcher",
+  "version": "1.0.3",
+  "description": "智能技能匹配器 - 自动分析用户命令并匹配最适合的技能",
+  "main": "scripts/analyze_command.py",
+  "scripts": {
+    "test": "python scripts/test_improved_matcher.py"
+  }
+}

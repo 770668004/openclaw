@@ -1,0 +1,35 @@
+#!/bin/bash
+# 工作上下文保存命令
+
+if [ $# -eq 0 ]; then
+    echo "用法: memory-context [--priority high|normal|low] \"上下文内容\""
+    exit 1
+fi
+
+PRIORITY="normal"
+CONTENT=""
+
+# 解析参数
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --priority|-p)
+            PRIORITY="$2"
+            shift 2
+            ;;
+        *)
+            if [ -z "$CONTENT" ]; then
+                CONTENT="$1"
+            else
+                CONTENT="$CONTENT $1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$CONTENT" ]; then
+    echo "错误: 需要提供上下文内容"
+    exit 1
+fi
+
+python3 /home/kousoyu/.openclaw/workspace/skills/multi-memory-manager/memory_manager.py context --content "$CONTENT" --priority "$PRIORITY"

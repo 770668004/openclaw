@@ -1,0 +1,4 @@
+#!/bin/bash
+# 获取记忆摘要命令
+
+python3 /home/kousoyu/.openclaw/workspace/skills/multi-memory-manager/memory_manager.py summary

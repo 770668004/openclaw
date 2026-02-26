@@ -1,0 +1,53 @@
+#!/bin/bash
+# 任务状态管理命令
+
+if [ $# -eq 0 ]; then
+    echo "用法1: memory-task [--priority high|normal|low] \"任务描述\" (保存新任务)"
+    echo "用法2: memory-task --complete --task-id TASK_ID (完成任务)"
+    exit 1
+fi
+
+PRIORITY="normal"
+TASK_ID=""
+DESCRIPTION=""
+COMPLETE=false
+
+# 解析参数
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --priority|-p)
+            PRIORITY="$2"
+            shift 2
+            ;;
+        --task-id)
+            TASK_ID="$2"
+            shift 2
+            ;;
+        --complete)
+            COMPLETE=true
+            shift
+            ;;
+        *)
+            if [ -z "$DESCRIPTION" ]; then
+                DESCRIPTION="$1"
+            else
+                DESCRIPTION="$DESCRIPTION $1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ "$COMPLETE" = true ]; then
+    if [ -z "$TASK_ID" ]; then
+        echo "错误: 完成任务需要提供 --task-id 参数"
+        exit 1
+    fi
+    python3 /home/kousoyu/.openclaw/workspace/skills/multi-memory-manager/memory_manager.py task --task-id "$TASK_ID"
+else
+    if [ -z "$DESCRIPTION" ]; then
+        echo "错误: 需要提供任务描述"
+        exit 1
+    fi
+    python3 /home/kousoyu/.openclaw/workspace/skills/multi-memory-manager/memory_manager.py task --content "$DESCRIPTION" --priority "$PRIORITY"
+fi

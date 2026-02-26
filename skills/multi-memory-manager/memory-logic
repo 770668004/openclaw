@@ -1,0 +1,40 @@
+#!/bin/bash
+# 逻辑历史保存命令
+
+if [ $# -lt 2 ]; then
+    echo "用法: memory-logic --topic \"主题\" [--importance high|medium|low] \"逻辑内容\""
+    exit 1
+fi
+
+TOPIC=""
+IMPORTANCE="medium"
+CONTENT=""
+
+# 解析参数
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --topic|-t)
+            TOPIC="$2"
+            shift 2
+            ;;
+        --importance|-i)
+            IMPORTANCE="$2"
+            shift 2
+            ;;
+        *)
+            if [ -z "$CONTENT" ]; then
+                CONTENT="$1"
+            else
+                CONTENT="$CONTENT $1"
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$TOPIC" ] || [ -z "$CONTENT" ]; then
+    echo "错误: 需要提供主题和内容"
+    exit 1
+fi
+
+python3 /home/kousoyu/.openclaw/workspace/skills/multi-memory-manager/memory_manager.py logic --topic "$TOPIC" --content "$CONTENT" --importance "$IMPORTANCE"

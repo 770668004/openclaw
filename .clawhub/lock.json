@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": {
+    "find": {
+      "version": "1.0.0",
+      "installedAt": 1772111355870
+    },
+    "sonoscli": {
+      "version": "1.0.0",
+      "installedAt": 1772112268377
+    }
+  }
+}

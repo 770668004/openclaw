@@ -1,0 +1,26 @@
+{
+  "name": "intelligent-skill-matcher",
+  "version": "1.0.0",
+  "description": "智能技能匹配器 - 自动分析用户命令并匹配最适合的OpenClaw技能",
+  "main": "scripts/analyze_command.py",
+  "scripts": {
+    "test": "python scripts/test_skill_matcher.py",
+    "init": "python scripts/init_skill.py"
+  },
+  "keywords": [
+    "skill",
+    "matcher",
+    "ai",
+    "command",
+    "analysis",
+    "chinese"
+  ],
+  "author": "OpenClaw Community",
+  "license": "MIT",
+  "openclaw": {
+    "skill_version": "1.0",
+    "requires": {
+      "python": ">=3.8"
+    }
+  }
+}
